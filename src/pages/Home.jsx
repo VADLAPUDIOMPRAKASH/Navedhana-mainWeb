@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import vegImage from '../assets/other/Vegetables.webp';
-import softImage from '../assets/other/Software.webp';
-import companyImage from '../assets/logo/NPA_Logo_WithoutText.png';
+import vegImage from '../../public/assets/other/Vegetables.webp';
+import softImage from '../../public/assets/other/Software.webp';
+import companyImage from '../../public/assets/logo/NPA_Logo_WithoutText.png';
 
 const Home = () => {
     const services = [
