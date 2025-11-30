@@ -32,7 +32,7 @@ const Seasonal = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50">
             {/* Hero Section */}
-            <div className="relative pt-32 pb-20 overflow-hidden min-h-[80vh] flex items-center">
+            <div className="relative pt-28 md:pt-32 pb-16 md:pb-20 overflow-hidden min-h-[80vh] flex items-center">
                 {/* Festive Confetti Animation */}
                 <div className="absolute inset-0">
                     {/* Colorful Confetti Pieces */}
@@ -80,7 +80,7 @@ const Seasonal = () => {
                                 left: `${25 * i}%`,
                                 top: `${30 * (i % 2)}%`,
                                 background: `radial-gradient(circle, ${['rgba(249, 115, 22, 0.1)', 'rgba(236, 72, 153, 0.1)',
-                                        'rgba(139, 92, 246, 0.1)', 'rgba(234, 179, 8, 0.1)'][i]
+                                    'rgba(139, 92, 246, 0.1)', 'rgba(234, 179, 8, 0.1)'][i]
                                     } 0%, transparent 70%)`
                             }}
                             animate={{
@@ -117,7 +117,7 @@ const Seasonal = () => {
                             </motion.div>
 
                             <motion.h1
-                                className="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight"
+                                className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-gray-900 mb-6 leading-tight"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
@@ -129,7 +129,7 @@ const Seasonal = () => {
                             </motion.h1>
 
                             <motion.p
-                                className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed"
+                                className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
@@ -152,12 +152,12 @@ const Seasonal = () => {
 
                         {/* Visual Element - Festive Cards */}
                         <motion.div
-                            className="relative"
+                            className="relative mt-12 lg:mt-0"
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            <div className="relative h-96">
+                            <div className="relative h-80 md:h-96">
                                 {/* Stacked Festive Cards */}
                                 {[
                                     { color: 'from-pink-500 to-purple-600', rotate: -6, delay: 0 },
@@ -188,10 +188,10 @@ const Seasonal = () => {
                                                 animate={{ scale: [1, 1.05, 1] }}
                                                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                                             >
-                                                <div className="text-5xl font-bold mb-2 opacity-90">
+                                                <div className="text-4xl md:text-5xl font-bold mb-2 opacity-90">
                                                     {['Holi', 'Diwali', 'Sankranti'][idx]}
                                                 </div>
-                                                <div className="text-lg opacity-70">Festival Joy</div>
+                                                <div className="text-base md:text-lg opacity-70">Festival Joy</div>
                                             </motion.div>
                                         </div>
                                     </motion.div>
@@ -203,7 +203,7 @@ const Seasonal = () => {
             </div>
 
             {/* Products Showcase */}
-            <div className="py-20">
+            <div className="py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -211,13 +211,13 @@ const Seasonal = () => {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Celebrate Every <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Festival</span>
                         </h2>
                         <p className="text-lg text-gray-600">Premium products for your special occasions</p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                         {products.map((product, idx) => (
                             <motion.div
                                 key={idx}
@@ -230,12 +230,12 @@ const Seasonal = () => {
                             >
                                 <div className={`absolute inset-0 bg-gradient-to-br ${product.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity`}></div>
 
-                                <div className={`relative bg-gradient-to-br ${product.bgGradient} rounded-3xl p-8 border border-white shadow-xl hover:shadow-2xl transition-all h-full flex flex-col`}>
-                                    <div className={`w-20 h-20 bg-gradient-to-br ${product.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-transform`}>
-                                        <div className="w-10 h-10 bg-white/30 rounded"></div>
+                                <div className={`relative bg-gradient-to-br ${product.bgGradient} rounded-3xl p-6 md:p-8 border border-white shadow-xl hover:shadow-2xl transition-all h-full flex flex-col`}>
+                                    <div className={`w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br ${product.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-transform`}>
+                                        <div className="w-8 h-8 md:w-10 md:h-10 bg-white/30 rounded"></div>
                                     </div>
 
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{product.title}</h3>
+                                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">{product.title}</h3>
                                     <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
                                         {product.desc}
                                     </p>
@@ -253,7 +253,7 @@ const Seasonal = () => {
             </div>
 
             {/* Features Section */}
-            <div className="py-20 bg-white/50">
+            <div className="py-16 md:py-20 bg-white/50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         {[
@@ -281,7 +281,7 @@ const Seasonal = () => {
             </div>
 
             {/* Newsletter Section */}
-            <div className="py-20">
+            <div className="py-16 md:py-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -290,8 +290,8 @@ const Seasonal = () => {
                         className="relative rounded-3xl overflow-hidden"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-600"></div>
-                        <div className="relative px-8 py-16 text-center">
-                            <h2 className="text-4xl font-bold text-white mb-4">Never Miss a Festival</h2>
+                        <div className="relative px-6 md:px-8 py-12 md:py-16 text-center">
+                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Never Miss a Festival</h2>
                             <p className="text-orange-100 text-lg mb-8">Get notified when seasonal products are back in stock</p>
                             <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-3">
                                 <input

@@ -32,7 +32,7 @@ const Vegetables = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50">
             {/* Hero Section */}
-            <div className="relative pt-32 pb-20 overflow-hidden min-h-[80vh] flex items-center">
+            <div className="relative pt-28 md:pt-32 pb-16 md:pb-20 overflow-hidden min-h-[80vh] flex items-center">
                 {/* Mouse-following particles */}
                 {particles.map((particle) => (
                     <motion.div
@@ -159,7 +159,7 @@ const Vegetables = () => {
                             </motion.div>
 
                             <motion.h1
-                                className="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight"
+                                className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-gray-900 mb-6 leading-tight"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
@@ -172,7 +172,7 @@ const Vegetables = () => {
                             </motion.h1>
 
                             <motion.p
-                                className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed"
+                                className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
@@ -195,7 +195,7 @@ const Vegetables = () => {
 
                         {/* Visual Element */}
                         <motion.div
-                            className="relative"
+                            className="relative mt-12 lg:mt-0"
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
@@ -227,8 +227,8 @@ const Vegetables = () => {
                                         animate={{ scale: [1, 1.02, 1] }}
                                         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                                     >
-                                        <div className="text-6xl font-bold mb-4 opacity-90">100%</div>
-                                        <div className="text-2xl font-semibold opacity-80">Organic & Fresh</div>
+                                        <div className="text-5xl md:text-6xl font-bold mb-4 opacity-90">100%</div>
+                                        <div className="text-xl md:text-2xl font-semibold opacity-80">Organic & Fresh</div>
                                     </motion.div>
                                 </div>
                             </div>
@@ -238,7 +238,7 @@ const Vegetables = () => {
             </div>
 
             {/* Features Grid */}
-            <div className="py-20">
+            <div className="py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {features.map((feature, idx) => (
@@ -266,7 +266,7 @@ const Vegetables = () => {
             </div>
 
             {/* Product Categories */}
-            <div className="py-20 bg-white/50">
+            <div className="py-16 md:py-20 bg-white/50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -274,13 +274,13 @@ const Vegetables = () => {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             What We <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Offer</span>
                         </h2>
                         <p className="text-lg text-gray-600">A wide variety of fresh produce</p>
                     </motion.div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                         {['Leafy Greens', 'Root Vegetables', 'Fresh Herbs', 'Seasonal Picks'].map((category, idx) => (
                             <motion.div
                                 key={idx}
@@ -293,7 +293,7 @@ const Vegetables = () => {
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-600 opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                    <h3 className="text-white font-bold text-xl text-center px-4">{category}</h3>
+                                    <h3 className="text-white font-bold text-lg md:text-xl text-center px-4">{category}</h3>
                                 </div>
                             </motion.div>
                         ))}
@@ -302,7 +302,7 @@ const Vegetables = () => {
             </div>
 
             {/* CTA Section */}
-            <div className="py-20">
+            <div className="py-16 md:py-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -311,10 +311,10 @@ const Vegetables = () => {
                         className="relative rounded-3xl overflow-hidden"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600"></div>
-                        <div className="relative px-8 py-16 text-center">
-                            <h2 className="text-4xl font-bold text-white mb-4">Ready to Order Fresh?</h2>
+                        <div className="relative px-6 md:px-8 py-12 md:py-16 text-center">
+                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Order Fresh?</h2>
                             <p className="text-green-100 text-lg mb-8">Get farm-fresh vegetables delivered to your door</p>
-                            <button className="px-10 py-4 bg-white text-green-700 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all shadow-2xl transform hover:scale-105">
+                            <button className="px-8 md:px-10 py-4 bg-white text-green-700 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all shadow-2xl transform hover:scale-105">
                                 Contact Us Now
                             </button>
                         </div>
