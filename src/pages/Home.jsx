@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import vegImage from '../../public/assets/other/Vegetables.webp';
 import softImage from '../../public/assets/other/Software.webp';
 import companyImage from '../../public/assets/logo/NPA_Logo_WithoutText.png';
+import whitecompanyImage from '../../public/assets/logo/NPA_Logo_whiteWithoutText.png';
 
 const Home = () => {
     const services = [
@@ -33,95 +34,116 @@ const Home = () => {
             bgGradient: "from-orange-50 to-amber-50",
             link: "/seasonal",
             features: ["Festive Joy", "Premium Quality", "Authentic"],
-            image: companyImage // Placeholder using vegImage as no specific seasonal image was found
+            image: companyImage
         }
     ];
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-green-50">
-            {/* Hero Section - Beautiful Animated Design */}
-            <section className="relative overflow-hidden pt-28 pb-24 lg:pt-36 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
-                {/* Static Background Elements */}
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-blue-50 opacity-50"></div>
-
-                {/* Radial Gradient Overlay for Depth */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_0%,rgba(255,255,255,0.3)_100%)]"></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/60"></div>
+            {/* Hero Section - CloudFuze Inspired with Original Content */}
+            <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
+                {/* Organic Green Shape Background */}
+                <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full">
+                    <svg
+                        viewBox="0 0 800 600"
+                        className="absolute top-0 right-0 w-full h-full"
+                        preserveAspectRatio="xMaxYMid slice"
+                    >
+                        <defs>
+                            <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#16a34a" />
+                                <stop offset="100%" stopColor="#22c55e" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M 400,0 
+                               C 200,50 150,150 200,300
+                               C 250,450 350,500 500,550
+                               C 650,600 750,550 800,400
+                               L 800,0 Z"
+                            fill="url(#greenGradient)"
+                            opacity="0.95"
+                        />
+                    </svg>
+                </div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    {/* Centered Hero Content */}
-                    <div className="max-w-4xl mx-auto text-center">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        {/* Left Column - Text Content */}
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
+                            className="text-left"
                         >
-                            {/* Badge */}
-                            <div className="mb-8">
-                                <span className="inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold tracking-wide uppercase text-green-700 bg-green-50 border border-green-200 shadow-sm">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="inline-block mb-6"
+                            >
+                                <span className="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold tracking-wide uppercase">
                                     Empowering Growth Since 2023
                                 </span>
-                            </div>
+                            </motion.div>
 
-                            {/* Main Headline */}
                             <motion.h1
-                                className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-tight mb-8"
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 0.2, duration: 0.6 }}
+                                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3, duration: 0.6 }}
                             >
-                                <span className="block text-gray-900 mb-3">Welcome to</span>
-                                <span className="block bg-gradient-to-r from-green-600 via-emerald-600 to-green-700 bg-clip-text text-transparent">
+                                <span className="block mb-2 sm:mb-3 text-gray-900">Welcome to</span>
+                                <span className="block text-white lg:text-transparent lg:bg-gradient-to-r lg:from-green-600 lg:via-green-500 lg:to-green-600 lg:bg-clip-text">
                                     Navedhana
                                 </span>
                             </motion.h1>
 
-                            {/* Subheadline */}
                             <motion.p
-                                className="mt-6 text-xl md:text-2xl text-gray-600 leading-relaxed mb-12 max-w-3xl mx-auto"
-                                initial={{ opacity: 0, y: 10 }}
+                                className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed max-w-xl"
+                                initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4, duration: 0.6 }}
                             >
-                                Where <span className="font-semibold text-green-600">Nature</span>,
-                                <span className="font-semibold text-blue-600"> Technology</span>, and
-                                <span className="font-semibold text-orange-600"> Tradition</span> Come Together
-                                To Create Something Extraordinary.
+                                <span className="text-white lg:text-gray-600">Where </span>
+                                <span className="font-semibold text-white lg:text-green-600">Nature</span>
+                                <span className="text-white lg:text-gray-600">, </span>
+                                <span className="font-semibold text-blue-300 lg:text-blue-600">Technology</span>
+                                <span className="text-white lg:text-gray-600">, and </span>
+                                <span className="font-semibold text-orange-300 lg:text-orange-600">Tradition</span>
+                                <span className="text-white lg:text-gray-600"> Come Together To Create Something Extraordinary.</span>
                             </motion.p>
 
-                            {/* CTA Buttons */}
                             <motion.div
-                                className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-                                initial={{ opacity: 0, y: 10 }}
+                                className="mb-8 sm:mb-12"
+                                initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5, duration: 0.6 }}
                             >
-                                <Link
-                                    to="/vegetables"
-                                    className="group relative px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-2xl font-bold text-lg shadow-xl shadow-green-500/30 hover:shadow-2xl hover:shadow-green-500/40 transition-all overflow-hidden"
+                                <a
+                                    href="#services"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                                    }}
+                                    className="group relative inline-block px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-green-500 text-white rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl shadow-green-500/30 hover:shadow-2xl hover:shadow-green-500/40 transition-all overflow-hidden"
                                 >
                                     <span className="relative z-10 flex items-center justify-center gap-2">
                                         Explore Services
-                                        <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                                        <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
                                     </span>
                                     <motion.div
-                                        className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-green-600"
+                                        className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600"
                                         initial={{ x: "-100%" }}
                                         whileHover={{ x: 0 }}
                                         transition={{ duration: 0.3 }}
                                     />
-                                </Link>
-                                <Link
-                                    to="/software"
-                                    className="px-8 py-4 bg-white text-gray-900 rounded-2xl font-bold text-lg border-2 border-gray-200 hover:border-green-500 hover:bg-gray-50 transition-all shadow-lg"
-                                >
-                                    Learn More
-                                </Link>
+                                </a>
                             </motion.div>
 
                             {/* Stats Row */}
                             <motion.div
-                                className="flex flex-wrap gap-8 justify-center items-center"
+                                className="flex flex-wrap gap-4 sm:gap-6 md:gap-8 items-center justify-center sm:justify-start"
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.6, duration: 0.6 }}
@@ -133,24 +155,42 @@ const Home = () => {
                                 ].map((stat, idx) => (
                                     <motion.div
                                         key={idx}
-                                        className="text-center px-6"
+                                        className="text-center min-w-[80px]"
                                         whileHover={{ scale: 1.05, y: -5 }}
                                         transition={{ type: "spring", stiffness: 300 }}
                                     >
-                                        <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
+                                        <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white lg:text-transparent lg:bg-gradient-to-r lg:from-green-600 lg:to-green-500 lg:bg-clip-text mb-1 sm:mb-2">
                                             {stat.value}
                                         </div>
-                                        <div className="text-sm md:text-base text-gray-600 font-medium">{stat.label}</div>
+                                        <div className="text-xs sm:text-sm md:text-base text-white lg:text-gray-600 font-medium">{stat.label}</div>
                                     </motion.div>
                                 ))}
                             </motion.div>
+                        </motion.div>
+
+                        {/* Right Column - Illustration/Visual */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="relative hidden lg:block"
+                        >
+                            <div className="relative w-full h-[500px] flex items-center justify-center">
+                                <div className="relative w-full h-full flex items-center justify-center">
+                                    <img
+                                        src={whitecompanyImage}
+                                        alt="Navedhana Services"
+                                        className="w-3/4 h-auto object-contain drop-shadow-2xl"
+                                    />
+                                </div>
+                            </div>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
             {/* Services Section */}
-            <section className="py-16 md:py-24 relative">
+            <section id="services" className="py-16 md:py-24 relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         className="text-center mb-12 md:mb-16"
@@ -182,7 +222,7 @@ const Home = () => {
                                         alt={service.title}
                                         className="w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-110"
                                     />
-                                    {/* Gradient Overlay - Reduced opacity for clarity */}
+                                    {/* Gradient Overlay */}
                                     <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-60 group-hover:opacity-40 transition-opacity duration-500`}></div>
                                     {/* Dark gradient at bottom for text readability */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
