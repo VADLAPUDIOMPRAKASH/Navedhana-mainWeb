@@ -34,68 +34,8 @@ const Seasonal = () => {
             {/* Hero Section */}
             <div className="relative pt-28 md:pt-32 pb-16 md:pb-20 overflow-hidden min-h-[80vh] flex items-center">
                 {/* Festive Confetti Animation */}
-                <div className="absolute inset-0">
-                    {/* Colorful Confetti Pieces */}
-                    {[...Array(30)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute"
-                            style={{
-                                width: `${Math.random() * 15 + 5}px`,
-                                height: `${Math.random() * 15 + 5}px`,
-                                left: `${Math.random() * 100}%`,
-                                top: `-${Math.random() * 20}%`,
-                                background: [
-                                    'linear-gradient(135deg, #f97316, #fb923c)',
-                                    'linear-gradient(135deg, #ec4899, #f472b6)',
-                                    'linear-gradient(135deg, #8b5cf6, #a78bfa)',
-                                    'linear-gradient(135deg, #eab308, #fbbf24)',
-                                    'linear-gradient(135deg, #06b6d4, #67e8f9)'
-                                ][i % 5],
-                                borderRadius: i % 3 === 0 ? '50%' : '0%',
-                                opacity: 0.3
-                            }}
-                            animate={{
-                                y: ['0vh', '120vh'],
-                                rotate: [0, 360 * (Math.random() > 0.5 ? 1 : -1)],
-                                x: [0, Math.random() * 100 - 50]
-                            }}
-                            transition={{
-                                duration: Math.random() * 8 + 8,
-                                repeat: Infinity,
-                                ease: "linear",
-                                delay: i * 0.2
-                            }}
-                        />
-                    ))}
-
-                    {/* Radial Bursts */}
-                    {[...Array(4)].map((_, i) => (
-                        <motion.div
-                            key={`burst-${i}`}
-                            className="absolute rounded-full"
-                            style={{
-                                width: '300px',
-                                height: '300px',
-                                left: `${25 * i}%`,
-                                top: `${30 * (i % 2)}%`,
-                                background: `radial-gradient(circle, ${['rgba(249, 115, 22, 0.1)', 'rgba(236, 72, 153, 0.1)',
-                                    'rgba(139, 92, 246, 0.1)', 'rgba(234, 179, 8, 0.1)'][i]
-                                    } 0%, transparent 70%)`
-                            }}
-                            animate={{
-                                scale: [1, 1.3, 1],
-                                opacity: [0.3, 0.6, 0.3]
-                            }}
-                            transition={{
-                                duration: 4,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                                delay: i * 0.5
-                            }}
-                        />
-                    ))}
-                </div>
+                {/* Static Background Pattern */}
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">

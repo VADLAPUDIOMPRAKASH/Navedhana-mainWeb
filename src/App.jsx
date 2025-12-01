@@ -8,9 +8,12 @@ import Software from './pages/Software';
 import Seasonal from './pages/Seasonal';
 import About from './pages/About';
 
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col">
         <Navbar />
         <main>

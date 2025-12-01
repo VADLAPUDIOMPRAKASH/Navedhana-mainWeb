@@ -1,90 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 import leafyImage from '../../public/assets/other/Leafy_Vegetables.webp';
 import rootImage from '../../public/assets/other/root_vegetables.jpg';
 import seasonalImage from '../../public/assets/other/mango.jpg';
 import marrowImage from '../../public/assets/other/Bottle_Gaurd.webp';
 
-const Dot = ({ baseX, baseY, mouseX, mouseY }) => {
-    const dotRef = React.useRef(null);
-    const [windowSize, setWindowSize] = React.useState({ width: typeof window !== 'undefined' ? window.innerWidth : 0, height: typeof window !== 'undefined' ? window.innerHeight : 0 });
-
-    React.useEffect(() => {
-        const handleResize = () => {
-            setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    const distance = useTransform([mouseX, mouseY], ([x, y]) => {
-        const dotX = (baseX * windowSize.width) / 100;
-        const dotY = (baseY * windowSize.height) / 100;
-        return Math.sqrt(Math.pow(x - dotX, 2) + Math.pow(y - dotY, 2));
-    });
-
-    const scale = useTransform(distance, [0, 400], [1, 0.5]);
-    const opacity = useTransform(distance, [0, 400], [0.4, 0.15]);
-
-    // Parallax effect
-    const x = useTransform(mouseX, (val) => (val - windowSize.width / 2) / 40);
-    const y = useTransform(mouseY, (val) => (val - windowSize.height / 2) / 40);
-
-    const springX = useSpring(x, { stiffness: 50, damping: 20 });
-    const springY = useSpring(y, { stiffness: 50, damping: 20 });
-
-    return (
-        <motion.div
-            ref={dotRef}
-            className="absolute w-1.5 h-1.5 bg-green-400 rounded-full"
-            style={{
-                left: `${baseX}%`,
-                top: `${baseY}%`,
-                scale,
-                opacity,
-                x: springX,
-                y: springY
-            }}
-        />
-    );
-};
-
 const Vegetables = () => {
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-    const [particles, setParticles] = useState([]);
-    const lastParticleTime = React.useRef(0);
-
     const categories = [
         { name: 'Leafy Greens', image: leafyImage },
         { name: 'Root Vegetables', image: rootImage },
         { name: 'Vegetables', image: marrowImage },
         { name: 'Seasonal Picks', image: seasonalImage }
     ];
-
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            // Update motion values for smooth, non-react-render animations
-            mouseX.set(e.clientX);
-            mouseY.set(e.clientY);
-
-            // Throttle particle creation to avoid excessive state updates
-            const now = Date.now();
-            if (now - lastParticleTime.current > 50) {
-                const newParticle = {
-                    id: now,
-                    x: e.clientX,
-                    y: e.clientY,
-                };
-                setParticles(prev => [...prev.slice(-15), newParticle]);
-                lastParticleTime.current = now;
-            }
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, [mouseX, mouseY]);
 
     const features = [
         { title: "100% Farm Fresh Daily", desc: "Sourced from certified organic farms" },
@@ -97,99 +25,8 @@ const Vegetables = () => {
         <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50">
             {/* Hero Section */}
             <div className="relative pt-28 md:pt-32 pb-16 md:pb-20 overflow-hidden min-h-[80vh] flex items-center">
-                {/* Mouse-following particles */}
-                {particles.map((particle) => (
-                    <motion.div
-                        key={particle.id}
-                        className="absolute w-1 h-1 bg-green-500 rounded-full pointer-events-none"
-                        initial={{
-                            x: particle.x,
-                            y: particle.y - window.scrollY,
-                            opacity: 0.8,
-                            scale: 1
-                        }}
-                        animate={{
-                            opacity: 0,
-                            scale: 0,
-                            x: particle.x + (Math.random() - 0.5) * 80,
-                            y: particle.y - window.scrollY + (Math.random() - 0.5) * 80
-                        }}
-                        transition={{ duration: 1.2, ease: "easeOut" }}
-                        style={{ zIndex: 50 }}
-                    />
-                ))}
-
-                {/* Animated Leaves Pattern */}
-                <div className="absolute inset-0">
-                    {/* Interactive dots */}
-                    {[...Array(40)].map((_, i) => {
-                        const baseX = (i % 8) * 12.5;
-                        const baseY = Math.floor(i / 8) * 20;
-
-                        // Create a component for each dot to isolate its transform logic
-                        return (
-                            <Dot
-                                key={i}
-                                i={i}
-                                baseX={baseX}
-                                baseY={baseY}
-                                mouseX={mouseX}
-                                mouseY={mouseY}
-                            />
-                        );
-                    })}
-
-                    {/* Organic Shapes */}
-                    {[...Array(8)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute rounded-full"
-                            style={{
-                                width: `${Math.random() * 200 + 50}px`,
-                                height: `${Math.random() * 200 + 50}px`,
-                                left: `${Math.random() * 100}%`,
-                                top: `${Math.random() * 100}%`,
-                                background: i % 2 === 0
-                                    ? 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)'
-                                    : 'radial-gradient(circle, rgba(5, 150, 105, 0.08) 0%, transparent 70%)',
-                            }}
-                            animate={{
-                                y: [0, -30, 0],
-                                x: [0, 20, 0],
-                                scale: [1, 1.1, 1],
-                            }}
-                            transition={{
-                                duration: Math.random() * 8 + 6,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                                delay: i * 0.5
-                            }}
-                        />
-                    ))}
-
-                    {/* Wavy Lines */}
-                    <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
-                        <motion.path
-                            d="M0,100 Q250,50 500,100 T1000,100 T1500,100 T2000,100"
-                            stroke="#10b981"
-                            strokeWidth="2"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        />
-                        <motion.path
-                            d="M0,200 Q250,150 500,200 T1000,200 T1500,200 T2000,200"
-                            stroke="#059669"
-                            strokeWidth="2"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: 0.5 }}
-                        />
-                    </svg>
-                </div>
-
+                {/* Static Background Pattern */}
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -267,13 +104,6 @@ const Vegetables = () => {
                                     style={{ opacity: 0.3 }}
                                 />
                                 <div className="relative aspect-square bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
-                                    {/* Animated Grid */}
-                                    <div className="absolute inset-0" style={{
-                                        backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                                     linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
-                                        backgroundSize: '40px 40px'
-                                    }}></div>
-
                                     <motion.div
                                         className="text-white text-center p-8"
                                         animate={{ scale: [1, 1.02, 1] }}

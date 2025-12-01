@@ -30,55 +30,8 @@ const Software = () => {
             {/* Hero Section */}
             <div className="relative pt-28 md:pt-32 pb-16 md:pb-20 overflow-hidden min-h-[80vh] flex items-center">
                 {/* Digital Code Rain Effect */}
-                <div className="absolute inset-0">
-                    {/* Binary Code Background */}
-                    {[...Array(15)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute text-blue-200 font-mono text-xs opacity-20"
-                            style={{
-                                left: `${(i * 7) % 100}%`,
-                                top: '-10%',
-                            }}
-                            animate={{
-                                y: ['0vh', '110vh'],
-                            }}
-                            transition={{
-                                duration: Math.random() * 10 + 10,
-                                repeat: Infinity,
-                                ease: "linear",
-                                delay: i * 0.5
-                            }}
-                        >
-                            {Array.from({ length: 20 }, () => Math.random() > 0.5 ? '1' : '0').join('\n')}
-                        </motion.div>
-                    ))}
-
-                    {/* Geometric Shapes */}
-                    {[...Array(6)].map((_, i) => (
-                        <motion.div
-                            key={`shape-${i}`}
-                            className="absolute border-2 border-blue-200"
-                            style={{
-                                width: `${Math.random() * 150 + 50}px`,
-                                height: `${Math.random() * 150 + 50}px`,
-                                left: `${Math.random() * 100}%`,
-                                top: `${Math.random() * 100}%`,
-                                borderRadius: i % 2 === 0 ? '50%' : '0%',
-                                opacity: 0.1
-                            }}
-                            animate={{
-                                rotate: [0, 360],
-                                scale: [1, 1.2, 1],
-                            }}
-                            transition={{
-                                duration: Math.random() * 20 + 15,
-                                repeat: Infinity,
-                                ease: "linear"
-                            }}
-                        />
-                    ))}
-                </div>
+                {/* Static Background Pattern */}
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
