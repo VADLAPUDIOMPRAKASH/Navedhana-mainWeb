@@ -1,14 +1,60 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 
 import leafyImage from '../../public/assets/other/Leafy_Vegetables.webp';
 import rootImage from '../../public/assets/other/root_vegetables.jpg';
 import seasonalImage from '../../public/assets/other/mango.jpg';
 import marrowImage from '../../public/assets/other/Bottle_Gaurd.webp';
 
+const Dot = ({ baseX, baseY, mouseX, mouseY }) => {
+    const dotRef = React.useRef(null);
+    const [windowSize, setWindowSize] = React.useState({ width: typeof window !== 'undefined' ? window.innerWidth : 0, height: typeof window !== 'undefined' ? window.innerHeight : 0 });
+
+    React.useEffect(() => {
+        const handleResize = () => {
+            setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const distance = useTransform([mouseX, mouseY], ([x, y]) => {
+        const dotX = (baseX * windowSize.width) / 100;
+        const dotY = (baseY * windowSize.height) / 100;
+        return Math.sqrt(Math.pow(x - dotX, 2) + Math.pow(y - dotY, 2));
+    });
+
+    const scale = useTransform(distance, [0, 400], [1, 0.5]);
+    const opacity = useTransform(distance, [0, 400], [0.4, 0.15]);
+
+    // Parallax effect
+    const x = useTransform(mouseX, (val) => (val - windowSize.width / 2) / 40);
+    const y = useTransform(mouseY, (val) => (val - windowSize.height / 2) / 40);
+
+    const springX = useSpring(x, { stiffness: 50, damping: 20 });
+    const springY = useSpring(y, { stiffness: 50, damping: 20 });
+
+    return (
+        <motion.div
+            ref={dotRef}
+            className="absolute w-1.5 h-1.5 bg-green-400 rounded-full"
+            style={{
+                left: `${baseX}%`,
+                top: `${baseY}%`,
+                scale,
+                opacity,
+                x: springX,
+                y: springY
+            }}
+        />
+    );
+};
+
 const Vegetables = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
     const [particles, setParticles] = useState([]);
+    const lastParticleTime = React.useRef(0);
 
     const categories = [
         { name: 'Leafy Greens', image: leafyImage },
@@ -19,20 +65,26 @@ const Vegetables = () => {
 
     useEffect(() => {
         const handleMouseMove = (e) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
+            // Update motion values for smooth, non-react-render animations
+            mouseX.set(e.clientX);
+            mouseY.set(e.clientY);
 
-            const newParticle = {
-                id: Date.now() + Math.random(),
-                x: e.clientX,
-                y: e.clientY,
-            };
-
-            setParticles(prev => [...prev.slice(-15), newParticle]);
+            // Throttle particle creation to avoid excessive state updates
+            const now = Date.now();
+            if (now - lastParticleTime.current > 50) {
+                const newParticle = {
+                    id: now,
+                    x: e.clientX,
+                    y: e.clientY,
+                };
+                setParticles(prev => [...prev.slice(-15), newParticle]);
+                lastParticleTime.current = now;
+            }
         };
 
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+    }, [mouseX, mouseY]);
 
     const features = [
         { title: "100% Farm Fresh Daily", desc: "Sourced from certified organic farms" },
@@ -73,28 +125,16 @@ const Vegetables = () => {
                     {[...Array(40)].map((_, i) => {
                         const baseX = (i % 8) * 12.5;
                         const baseY = Math.floor(i / 8) * 20;
-                        const distance = Math.sqrt(
-                            Math.pow(mousePosition.x - (baseX * window.innerWidth / 100), 2) +
-                            Math.pow(mousePosition.y - (baseY * window.innerHeight / 100), 2)
-                        );
-                        const scale = Math.max(0.5, 1 - distance / 400);
 
+                        // Create a component for each dot to isolate its transform logic
                         return (
-                            <motion.div
+                            <Dot
                                 key={i}
-                                className="absolute w-1.5 h-1.5 bg-green-400 rounded-full"
-                                style={{
-                                    left: `${baseX}%`,
-                                    top: `${baseY}%`,
-                                    opacity: 0.25
-                                }}
-                                animate={{
-                                    scale: scale,
-                                    opacity: 0.15 + scale * 0.25,
-                                    x: (mousePosition.x - window.innerWidth / 2) / 40,
-                                    y: (mousePosition.y - window.innerHeight / 2) / 40
-                                }}
-                                transition={{ type: "spring", stiffness: 50, damping: 20 }}
+                                i={i}
+                                baseX={baseX}
+                                baseY={baseY}
+                                mouseX={mouseX}
+                                mouseY={mouseY}
                             />
                         );
                     })}

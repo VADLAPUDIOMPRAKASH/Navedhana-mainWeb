@@ -100,7 +100,7 @@ const Home = () => {
                 />
 
                 {/* Green Galaxy Stars - Uniform and Bright */}
-                {[...Array(150)].map((_, i) => {
+                {[...Array(50)].map((_, i) => {
                     return (
                         <motion.div
                             key={i}
