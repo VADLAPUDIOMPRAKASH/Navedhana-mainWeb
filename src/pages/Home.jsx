@@ -12,8 +12,8 @@ const Home = () => {
         {
             title: "Vegetables Supply",
             description: "Farm-fresh, organic vegetables delivered with love and care to your doorstep.",
-            gradient: "from-green-500 to-emerald-600",
-            bgGradient: "from-green-50 to-emerald-50",
+            gradient: "from-lime-500 to-lime-600",
+            bgGradient: "from-lime-50 to-lime-100",
             link: "/vegetables",
             features: ["100% Organic", "Daily Fresh", "Farm Direct"],
             image: vegImage
@@ -39,9 +39,9 @@ const Home = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-green-50">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-lime-50">
             {/* Hero Section - CloudFuze Inspired with Original Content */}
-            <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
+            <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-lime-50 via-white to-blue-50">
                 {/* Organic Green Shape Background */}
                 <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full">
                     <svg
@@ -51,8 +51,8 @@ const Home = () => {
                     >
                         <defs>
                             <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stopColor="#16a34a" />
-                                <stop offset="100%" stopColor="#22c55e" />
+                                <stop offset="0%" stopColor="#84BD00" />
+                                <stop offset="100%" stopColor="#a3d900" />
                             </linearGradient>
                         </defs>
                         <path
@@ -82,7 +82,7 @@ const Home = () => {
                                 transition={{ delay: 0.2 }}
                                 className="inline-block mb-6"
                             >
-                                <span className="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold tracking-wide uppercase">
+                                <span className="px-4 py-2 bg-lime-100 text-lime-700 rounded-full text-sm font-semibold tracking-wide uppercase">
                                     Empowering Growth Since 2023
                                 </span>
                             </motion.div>
@@ -94,7 +94,7 @@ const Home = () => {
                                 transition={{ delay: 0.3, duration: 0.6 }}
                             >
                                 <span className="block mb-2 sm:mb-3 text-gray-900">Welcome to</span>
-                                <span className="block text-white lg:text-transparent lg:bg-gradient-to-r lg:from-green-600 lg:via-green-500 lg:to-green-600 lg:bg-clip-text">
+                                <span className="block text-white lg:text-transparent lg:bg-gradient-to-r lg:from-lime-600 lg:via-lime-500 lg:to-lime-600 lg:bg-clip-text">
                                     Navedhana
                                 </span>
                             </motion.h1>
@@ -106,7 +106,7 @@ const Home = () => {
                                 transition={{ delay: 0.4, duration: 0.6 }}
                             >
                                 <span className="text-white lg:text-gray-600">Where </span>
-                                <span className="font-semibold text-white lg:text-green-600">Nature</span>
+                                <span className="font-semibold text-white lg:text-lime-600">Nature</span>
                                 <span className="text-white lg:text-gray-600">, </span>
                                 <span className="font-semibold text-blue-300 lg:text-blue-600">Technology</span>
                                 <span className="text-white lg:text-gray-600">, and </span>
@@ -126,7 +126,7 @@ const Home = () => {
                                         e.preventDefault();
                                         document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
                                     }}
-                                    className="group relative inline-block px-6 sm:px-8 py-3 sm:py-4 bg-white lg:bg-gradient-to-r lg:from-green-600 lg:to-green-500 text-green-700 lg:text-white rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all border-2 border-white lg:border-0"
+                                    className="group relative inline-block px-6 sm:px-8 py-3 sm:py-4 bg-white lg:bg-gradient-to-r lg:from-lime-600 lg:to-lime-500 text-lime-700 lg:text-white rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all border-2 border-white lg:border-0"
                                 >
                                     <span className="relative z-10 flex items-center justify-center gap-2">
                                         Explore Services
@@ -153,7 +153,7 @@ const Home = () => {
                                         whileHover={{ scale: 1.05, y: -5 }}
                                         transition={{ type: "spring", stiffness: 300 }}
                                     >
-                                        <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white lg:text-transparent lg:bg-gradient-to-r lg:from-green-600 lg:to-green-500 lg:bg-clip-text mb-1 sm:mb-2">
+                                        <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white lg:text-transparent lg:bg-gradient-to-r lg:from-lime-600 lg:to-lime-500 lg:bg-clip-text mb-1 sm:mb-2">
                                             {stat.value}
                                         </div>
                                         <div className="text-xs sm:text-sm md:text-base text-white lg:text-gray-600 font-medium">{stat.label}</div>
@@ -193,7 +193,7 @@ const Home = () => {
                         viewport={{ once: true }}
                     >
                         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                            Our <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Services</span>
+                            Our <span className="bg-gradient-to-r from-lime-600 to-lime-500 bg-clip-text text-transparent">Services</span>
                         </h2>
                         <p className="text-lg md:text-xl text-gray-600">Diverse solutions for modern needs</p>
                     </motion.div>
@@ -235,7 +235,7 @@ const Home = () => {
                                     <div className="space-y-2 mb-6 mt-auto">
                                         {service.features.map((feature, idx) => (
                                             <div key={idx} className="flex items-center gap-2 text-sm text-gray-100">
-                                                <div className="w-1.5 h-1.5 bg-green-400 rounded-full shadow-[0_0_8px_rgba(74,222,128,0.8)]"></div>
+                                                <div className="w-1.5 h-1.5 bg-lime-400 rounded-full shadow-[0_0_8px_rgba(163,217,0,0.8)]"></div>
                                                 <span className="font-medium">{feature}</span>
                                             </div>
                                         ))}
@@ -268,7 +268,7 @@ const Home = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-                                Why Choose <span className="bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">Navedhana</span>?
+                                Why Choose <span className="bg-gradient-to-r from-lime-400 to-lime-500 bg-clip-text text-transparent">Navedhana</span>?
                             </h2>
                             <p className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed">
                                 As a passionate startup, we're committed to excellence in everything we do.
@@ -290,7 +290,7 @@ const Home = () => {
                                         transition={{ delay: i * 0.1 }}
                                         className="flex items-start gap-4 p-4 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors border border-white/5"
                                     >
-                                        <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-green-900/20">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-lime-500 to-lime-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-lime-900/20">
                                             <div className="w-6 h-6 bg-white/30 rounded"></div>
                                         </div>
                                         <div>
@@ -325,7 +325,7 @@ const Home = () => {
                                         whileHover={{ scale: 1.05 }}
                                         className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/15 transition-all border border-white/5 shadow-xl"
                                     >
-                                        <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent mb-2">
+                                        <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-lime-400 to-lime-500 bg-clip-text text-transparent mb-2">
                                             {stat.value}
                                         </div>
                                         <div className="text-sm text-gray-300 font-medium">{stat.label}</div>

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 import logo from '../../public/assets/logo/NPA_Logo_Enlarge.png';
+import blueLogo from '../../public/assets/logo/blueLogo_Englarge.png';
+import orangeLogo from '../../public/assets/logo/orangeLogo_Englarge.png';
 
 const Footer = () => {
     const location = useLocation();
@@ -10,6 +12,12 @@ const Footer = () => {
     const getThemeColors = () => {
         switch (location.pathname) {
             case '/':
+                return {
+                    gradient: 'from-lime-500 to-lime-600',
+                    accentColor: 'text-lime-400',
+                    iconColor: 'text-lime-500',
+                    bgGradient: 'from-lime-900 via-gray-800 to-black'
+                };
             case '/vegetables':
                 return {
                     gradient: 'from-green-500 to-emerald-600',
@@ -50,6 +58,18 @@ const Footer = () => {
 
     const theme = getThemeColors();
 
+    // Get logo based on current route
+    const getCurrentLogo = () => {
+        switch (location.pathname) {
+            case '/software':
+                return blueLogo;
+            case '/seasonal':
+                return orangeLogo;
+            default:
+                return logo;
+        }
+    };
+
     return (
         <footer id="footer" className={`bg-gradient-to-br ${theme.bgGradient} text-white relative overflow-hidden`}>
             {/* Decorative Elements */}
@@ -61,26 +81,39 @@ const Footer = () => {
                     <div className="md:col-span-2">
                         <div className="flex items-center gap-3 mb-4 sm:mb-6">
                             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center">
-                                <img src={logo} alt="Navedhana" className="w-full h-full object-contain" />
+                                <img src={getCurrentLogo()} alt="Navedhana" className="w-full h-full object-contain" />
                             </div>
-                            <span className="font-bold text-2xl sm:text-3xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Navedhana</span>
+                            <div>
+                                <span className="font-bold text-xl sm:text-2xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent block">Navedhana</span>
+                                <span className="text-xs sm:text-sm text-gray-400">Profit Amplifier Pvt. Ltd</span>
+                            </div>
                         </div>
                         <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 max-w-md">
                             Empowering growth through fresh produce, innovative software solutions,
                             and seasonal joy. Your trusted partner for quality and excellence.
                         </p>
-                        {/* Social Icons - Hidden on mobile */}
-                        <div className="hidden sm:flex gap-4">
-                            {['facebook', 'twitter', 'instagram', 'linkedin'].map((social) => (
-                                <a
-                                    key={social}
-                                    href="#"
-                                    className="w-10 h-10 bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center transition-all hover:scale-110"
-                                >
-                                    <span className="sr-only">{social}</span>
-                                    <div className="w-5 h-5 bg-gray-400 rounded"></div>
-                                </a>
-                            ))}
+                        {/* Social Media Icons */}
+                        <div className="flex gap-4">
+                            {[
+                                { name: 'Instagram', icon: Instagram, link: 'https://instagram.com', color: 'hover:text-pink-400' },
+                                { name: 'LinkedIn', icon: Linkedin, link: 'https://linkedin.com', color: 'hover:text-blue-400' },
+                                { name: 'WhatsApp', icon: MessageCircle, link: 'https://wa.me/', color: 'hover:text-green-400' },
+                                { name: 'Email', icon: Mail, link: 'mailto:info@navedhana.com', color: 'hover:text-red-400' }
+                            ].map((social) => {
+                                const IconComponent = social.icon;
+                                return (
+                                    <a
+                                        key={social.name}
+                                        href={social.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`w-10 h-10 bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center transition-all hover:scale-110 text-gray-400 ${social.color}`}
+                                        title={social.name}
+                                    >
+                                        <IconComponent size={20} />
+                                    </a>
+                                );
+                            })}
                         </div>
                     </div>
 

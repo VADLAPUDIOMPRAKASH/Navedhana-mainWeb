@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import logo from '../../public/assets/logo/NPA_Logo_Enlarge.png';
+import blueLogo from '../../public/assets/logo/blueLogo_Englarge.png';
+import orangeLogo from '../../public/assets/logo/orangeLogo_Englarge.png';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -29,10 +31,31 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  // Get logo based on current route
+  const getCurrentLogo = () => {
+    switch (location.pathname) {
+      case '/software':
+        return blueLogo;
+      case '/seasonal':
+        return orangeLogo;
+      default:
+        return logo;
+    }
+  };
+
   // Dynamic styles based on route
   const getThemeStyles = () => {
     switch (location.pathname) {
       case '/':
+        return {
+          border: 'border-lime-200/50',
+          activeBg: 'bg-lime-600',
+          activeText: 'text-lime-600',
+          buttonBg: 'bg-lime-600 hover:bg-lime-700',
+          buttonBorder: 'border-lime-600',
+          glow: 'shadow-lime-500/20',
+          gradientText: 'from-lime-700 to-lime-900'
+        };
       case '/vegetables':
         return {
           border: 'border-green-200/50',
@@ -103,7 +126,7 @@ const Navbar = () => {
             {/* Logo Section */}
             <Link to="/" className="flex items-center gap-3 group">
               <div className="relative w-10 h-10 group-hover:scale-110 transition-transform duration-300">
-                <img src={logo} alt="Navedhana" className="w-full h-full object-contain" />
+                <img src={getCurrentLogo()} alt="Navedhana" className="w-full h-full object-contain" />
               </div>
               <span className={`font-bold text-xl bg-gradient-to-r ${theme.gradientText} bg-clip-text text-transparent tracking-tight`}>
                 Navedhana
