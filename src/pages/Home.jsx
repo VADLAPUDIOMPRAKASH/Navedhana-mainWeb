@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import vegImage from '../../public/assets/other/Vegetables.webp';
-import softImage from '../../public/assets/other/Software.webp';
-import companyImage from '../../public/assets/logo/NPA_Logo_WithoutText.png';
-import whitecompanyImage from '../../public/assets/logo/NPA_Logo_whiteWithoutText.png';
+const vegImage = '/assets/other/Vegetables.webp';
+const softImage = '/assets/other/Software.webp';
+const companyImage = '/assets/logo/NPA_Logo_WithoutText.png';
+const whitecompanyImage = '/assets/logo/NPA_Logo_whiteWithoutText.png';
 
 const Home = () => {
     const services = [

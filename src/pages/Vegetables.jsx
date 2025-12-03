@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import leafyImage from '../../public/assets/other/Leafy_Vegetables.webp';
-import rootImage from '../../public/assets/other/root_vegetables.jpg';
-import seasonalImage from '../../public/assets/other/mango.jpg';
-import marrowImage from '../../public/assets/other/Bottle_Gaurd.webp';
+const leafyImage = '/assets/other/Leafy_Vegetables.webp';
+const rootImage = '/assets/other/root_vegetables.jpg';
+const seasonalImage = '/assets/other/mango.jpg';
+const marrowImage = '/assets/other/Bottle_Gaurd.webp';
 
 const Vegetables = () => {
     const categories = [

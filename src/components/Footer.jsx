@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { FaInstagram, FaLinkedin, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
-import logo from '../../public/assets/logo/NPA_Logo_Enlarge.png';
-import blueLogo from '../../public/assets/logo/blueLogo_Englarge.png';
-import orangeLogo from '../../public/assets/logo/orangeLogo_Englarge.png';
+const logo = '/assets/logo/NPA_Logo_Enlarge.png';
+const blueLogo = '/assets/logo/blueLogo_Englarge.png';
+const orangeLogo = '/assets/logo/orangeLogo_Englarge.png';
 
 const Footer = () => {
     const location = useLocation();

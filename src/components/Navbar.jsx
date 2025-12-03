@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import logo from '../../public/assets/logo/NPA_Logo_Enlarge.png';
-import blueLogo from '../../public/assets/logo/blueLogo_Englarge.png';
-import orangeLogo from '../../public/assets/logo/orangeLogo_Englarge.png';
+const logo = '/assets/logo/NPA_Logo_Enlarge.png';
+const blueLogo = '/assets/logo/blueLogo_Englarge.png';
+const orangeLogo = '/assets/logo/orangeLogo_Englarge.png';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -198,7 +198,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-sm bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden lg:hidden"
+            className="fixed top-24 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden lg:hidden"
           >
             <div className="p-2 space-y-1">
               {links.map((link) => (
